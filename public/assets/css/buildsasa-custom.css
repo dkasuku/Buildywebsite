@@ -1,0 +1,261 @@
+/* Buildsasa polish + responsive safety (layered on top of main.css) */
+
+/* Responsive images everywhere */
+img { max-width: 100%; }
+
+/* Product mockups: show full UI, never awkwardly crop, on a soft canvas */
+.about-image-style-2 img,
+.project-box-items-style-2 .project-image img,
+.service-card-items-style-2 .service-image img {
+  object-fit: cover;
+  object-position: center;
+  background: #0b2a4a;
+}
+
+/* Crisp SVG rendering */
+img[src$=".svg"] { image-rendering: auto; }
+
+/* Hero SVG backgrounds: cover + center */
+.hero-2 .hero-bg { background-size: cover; background-position: center; }
+
+/* CTA app screen sits flush, transparent */
+.cta-image-style-2 img { object-fit: contain; background: transparent; }
+
+/* ---- Small-screen tuning ---- */
+@media (max-width: 991px) {
+  .hero-2 .hero-content h1 { font-size: 56px; line-height: 1.05; }
+  .hero-2 .hero-content h2 { font-size: 40px; }
+  .feature-bg-section .count-box { position: static; margin: 0 auto 24px; }
+}
+@media (max-width: 575px) {
+  .hero-2 .hero-content h1 { font-size: 40px; }
+  .hero-2 .hero-content h2 { font-size: 30px; }
+  .hero-2 .hero-content .sub-text { font-size: 13px; }
+  .counter-wrapper { gap: 24px; }
+  .pricing-card-items-style-1 { margin-bottom: 24px; }
+}
+
+/* Pricing: keep price line tidy now that it's text, not a number */
+.pricing-card-items-style-1 .price { font-size: 34px; line-height: 1.1; }
+
+/* Brand logo sizing (badge + wordmark lockup) */
+.header-logo img,
+.offcanvas__logo img { max-height: 50px; width: auto; }
+.footer-newsletter .content img { max-height: 52px; width: auto; }
+@media (max-width: 575px) {
+  .header-logo img, .offcanvas__logo img { max-height: 42px; }
+}
+
+/* ---- Real photo placements ---- */
+/* Round testimonial + hero-box face photos */
+.testimonial-box-item-style-2 .info-item img {
+  width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+}
+.hero-box .client-items img {
+  width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
+}
+/* Photos fill their containers without distortion */
+.about-image-style-2 img,
+.our-imapact-left-item .impact-image img,
+.contact-image-style-2 img { width: 100%; height: 100%; object-fit: cover; }
+.our-imapact-left-item .impact-image { overflow: hidden; }
+
+/* Hero: left-weighted dark gradient so white headline reads over any photo */
+.hero-2 .hero-bg::before {
+  background: linear-gradient(90deg,
+     rgba(9,15,24,0.82) 0%,
+     rgba(9,15,24,0.55) 34%,
+     rgba(9,15,24,0.22) 60%,
+     rgba(9,15,24,0.05) 100%) !important;
+}
+@media (max-width: 991px) {
+  .hero-2 .hero-bg::before { background: rgba(9,15,24,0.62) !important; }
+}
+
+/* ---- New photo placements (feature/showcase/resources/impact/contact/CTA) ---- */
+.impact-content .impact-image img { width: 100%; height: 100%; object-fit: cover; }
+.news-card-items-style-2 .news-image img { object-fit: cover; }
+/* CTA customer-support photo (transparent cutout) */
+.cta-image-style-2 img { object-fit: contain; background: transparent; max-height: 520px; }
+/* Logo (new raster lockup) */
+.header-logo img, .offcanvas__logo img { max-height: 56px; width: auto; }
+.footer-newsletter .content img { max-height: 60px; width: auto; }
+
+/* Avatar strip (social proof) sizing */
+.feature-list-bottom .info-item img { height: 46px; width: auto; }
+.testimonial-box-item-style-new .group-image img { height: 44px; width: auto; }
+/* Inner-page image safety */
+.breadcrumb-wrapper { background-position: center; background-size: cover; }
+
+/* Pricing "Best value" badge */
+.pricing-header h3 .bsa-save {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .5px;
+  background: var(--theme, #F45B1E); color: #fff; padding: 3px 10px; border-radius: 20px;
+  margin-left: 8px; vertical-align: middle; text-transform: uppercase;
+}
+
+/* ============================================================
+   RESPONSIVE SAFETY LAYER  (covers all Buildsasa changes)
+   ============================================================ */
+
+/* Never allow sideways scrolling from decorative shapes/photos */
+html, body { overflow-x: hidden; max-width: 100%; }
+img, svg, video, canvas, iframe { max-width: 100%; }
+h1, h2, h3, h4 { overflow-wrap: break-word; }
+
+/* Google map (footer + contact) stays fluid */
+.map-items, .googpemap, .contact-map, .contact-mapping { width: 100%; }
+.googpemap iframe, .map-items iframe, .contact-map iframe, .contact-mapping iframe {
+  width: 100% !important; height: 100%; min-height: 240px; border: 0;
+}
+
+/* Logo lockup: keep tidy beside the mobile hamburger */
+@media (max-width: 575px) {
+  .header-logo img, .offcanvas__logo img { max-height: 40px; max-width: 190px; }
+}
+
+/* ---- Tablet (<= 991px) ---- */
+@media (max-width: 991px) {
+  .hero-2 { padding: 200px 0 110px; }
+  .pricing-section .row.justify-content-center { row-gap: 24px; }
+  /* big display headings scale down */
+  .hero-2 .hero-content h1 { font-size: 54px; }
+}
+
+/* ---- Large phones / small tablets (<= 767px) ---- */
+@media (max-width: 767px) {
+  .hero-2 { padding: 170px 0 90px; text-align: left; }
+  .hero-2 .hero-content h1 { font-size: 40px; line-height: 1.05; }
+  .hero-2 .hero-content h2 { font-size: 30px; }
+  .hero-2 .hero-button { flex-wrap: wrap; gap: 12px; }
+  /* CTA band: stack the support photo neatly */
+  .cta-image-style-2 img, .cta-bg-section-5 .cta-man img { max-height: 360px; margin-inline: auto; display: block; }
+  /* Pricing cards full width and spaced */
+  .pricing-card-items-style-1 { margin-bottom: 22px; }
+  /* About testimonial + role cards comfortable */
+  .testimonial-section-6 { background-position: center; }
+}
+
+/* ---- Phones (<= 575px) ---- */
+@media (max-width: 575px) {
+  .hero-2 .hero-content h1 { font-size: 32px; }
+  .hero-2 .hero-content h2 { font-size: 24px; }
+  .hero-2 .hero-content .sub-text { font-size: 12px; }
+  .hero-2 .hero-content p { font-size: 15px; }
+  /* Counters/impact wrap instead of squashing */
+  .counter-wrapper, .feature-list-bottom { flex-wrap: wrap; gap: 20px; }
+  /* Buttons go full-width and tappable */
+  .hero-button .theme-btn-main { width: 100%; justify-content: center; }
+  /* Section breadcrumb title not too huge */
+  .breadcrumb-title { font-size: 34px; line-height: 1.1; }
+  /* Pricing "Best value" badge wraps under name on tiny screens */
+  .pricing-header h3 .bsa-save { display: inline-block; margin: 6px 0 0; }
+}
+
+/* ---- Very small phones (<= 400px) ---- */
+@media (max-width: 400px) {
+  .hero-2 .hero-content h1 { font-size: 28px; }
+  .breadcrumb-title { font-size: 28px; }
+  .pricing-card-items-style-1 .price { font-size: 28px; }
+}
+
+/* News comment & author avatars (real faces) */
+.comment-items .comment-image img, .comment-image img,
+.news-details-content .client-image img,
+.comment-area img.replace, .comment-list img { object-fit: cover; border-radius: 50%; }
+.blog-single-comment .image img { object-fit: cover; border-radius: 50%; }
+
+/* Signature image */
+.sign-image img { height: 30px; width: auto; max-width: 100%; }
+
+/* Slimmer, consistent page-title banner (template default was ~500px tall) */
+.breadcrumb-wrapper .page-heading { padding: 200px 0 80px !important; }
+@media (max-width: 991px) { .breadcrumb-wrapper .page-heading { padding: 165px 0 70px !important; } }
+@media (max-width: 767px) { .breadcrumb-wrapper .page-heading { padding: 150px 0 60px !important; } }
+@media (max-width: 575px) { .breadcrumb-wrapper .page-heading { padding: 135px 0 50px !important; } }
+
+/* Uniform, readable page-title banner overlay across all inner pages */
+.breadcrumb-wrapper::before { background: rgba(11,16,24,0.45) !important; }
+
+/* Hero-box signature: override template's height/width:initial so it fits */
+.hero-section-2 .hero-box .client-items .text .sign-image img {
+  height: 30px !important;
+  width: auto !important;
+  max-width: 160px;
+}
+/* ============================================================
+   RESPONSIVE HARDENING — all devices (Buildsasa, final pass)
+   ============================================================ */
+html, body { overflow-x: hidden; max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, iframe, canvas, table, pre { max-width: 100%; }
+h1, h2, h3, h4, h5 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Map iframes stay fluid */
+.googpemap iframe, .map-items iframe, .contact-map iframe { width: 100% !important; min-height: 240px; }
+
+/* Two-card pricing & team always stack + center cleanly */
+.pricing-section .row.justify-content-center,
+.team-section .row.justify-content-center { row-gap: 24px; }
+
+/* CTA bands: support photo scales, never overflows */
+.cta-bg-section-5 .cta-man img,
+.cta-image-style-2 img { max-width: 100%; height: auto; }
+
+/* ---- Tablet (<= 991px) ---- */
+@media (max-width: 991px) {
+  .cta-bg-section-5 .cta-man { display: none; }            /* hide oversized cutout on tablet/phone */
+  .feature-bg-section .count-box { position: static; margin: 0 auto 22px; }
+  .testimonial-section-2 .testimonial-top,
+  .impact-content, .about-content-style-2 { margin-top: 18px; }
+}
+
+/* ---- Phones (<= 767px) ---- */
+@media (max-width: 767px) {
+  section[class*="section-padding"], .section-padding { padding-top: 70px; padding-bottom: 70px; }
+  .hero-2 { padding: 165px 0 80px; }
+  .pricing-card-items-style-1 { margin-bottom: 22px; }
+  .counter-wrapper, .feature-list-bottom { flex-wrap: wrap; gap: 22px; justify-content: center; }
+  .theme-btn-main, .pricing-btn, .theme-btn-2 { white-space: normal; }
+  .breadcrumb-title { font-size: 32px; line-height: 1.12; }
+}
+
+/* ---- Small phones (<= 575px) ---- */
+@media (max-width: 575px) {
+  .hero-2 .hero-content h1 { font-size: 32px; }
+  .hero-2 .hero-content h2 { font-size: 24px; }
+  .hero-2 .hero-content p { font-size: 15px; }
+  .hero-button { flex-wrap: wrap; gap: 12px; }
+  .hero-button .theme-btn-main { width: 100%; justify-content: center; }
+  .breadcrumb-title { font-size: 27px; }
+  .sec_title, .tx-title { font-size: 30px !important; line-height: 1.15; }
+  .testimonial-box-item-style-2, .testimonial-box-item-style-new { padding: 22px; }
+}
+
+/* ---- Tiny phones (<= 400px) ---- */
+@media (max-width: 400px) {
+  .hero-2 .hero-content h1 { font-size: 27px; }
+  .pricing-card-items-style-1 .price { font-size: 26px; }
+  .header-logo img { max-height: 36px; }
+}
+
+/* ---- Hero headline: final authoritative sizes (fits + reads well on phones) ---- */
+@media (max-width: 991px) {
+  .hero-2 .hero-content h1 { font-size: 54px; line-height: 1.05; }
+  .hero-2 .hero-content h2 { font-size: 40px; }
+}
+@media (max-width: 767px) {
+  .hero-2 .hero-content h1 { font-size: 46px; }
+  .hero-2 .hero-content h2 { font-size: 32px; }
+  .hero-2 .hero-content .sub-text { font-size: 13px; }
+}
+@media (max-width: 575px) {
+  .hero-2 .hero-content h1 { font-size: 40px; }
+  .hero-2 .hero-content h2 { font-size: 28px; }
+  .hero-2 .hero-content p { font-size: 15px; max-width: 100%; }
+  .hero-2 .hero-box { margin-top: 24px; }
+}
+@media (max-width: 400px) {
+  .hero-2 .hero-content h1 { font-size: 33px; }
+  .hero-2 .hero-content h2 { font-size: 23px; }
+}
