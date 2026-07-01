@@ -259,3 +259,15 @@ h1, h2, h3, h4, h5 { overflow-wrap: break-word; word-wrap: break-word; }
   .hero-2 .hero-content h1 { font-size: 33px; }
   .hero-2 .hero-content h2 { font-size: 23px; }
 }
+
+/* Legal pages (Terms & Privacy) */
+.legal-content { max-width: 920px; margin: 0 auto; color: #4b5563; }
+.legal-content .legal-meta { color: #6b7280; margin-bottom: 26px; }
+.legal-content h3 { margin: 34px 0 12px; font-size: 22px; color: #1E2023; font-weight: 700; }
+.legal-content p { margin-bottom: 14px; line-height: 1.8; }
+.legal-content ul { margin: 0 0 20px 22px; list-style: disc; }
+.legal-content li { margin-bottom: 10px; line-height: 1.75; }
+.legal-content a { color: var(--theme, #F45B1E); text-decoration: underline; }
+.footer-legal-links { display: flex; gap: 22px; }
+.footer-legal-links a { color: #cfd3d8; }
+.footer-legal-links a:hover { color: var(--theme, #F45B1E); }
