@@ -56,6 +56,17 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/assets/css/buildsasa-custom.css" />
       </head>
       <body>
+        {/* buildsasa-forms.js is a static asset and cannot read build-time env, so
+            the API base is published here for it to read. Without this the script
+            falls back to a hardcoded URL — which works, but would silently ignore
+            NEXT_PUBLIC_API_URL if the backend ever moved. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__BUILDSASA_API__=${JSON.stringify(
+              process.env.NEXT_PUBLIC_API_URL || "https://api.buildsasa.com",
+            )};`,
+          }}
+        />
         <div dangerouslySetInnerHTML={{ __html: pre }} />
         <Header />
         <div dangerouslySetInnerHTML={{ __html: search }} />
